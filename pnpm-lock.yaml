@@ -27,6 +27,7 @@ specifiers:
   gatsby-script: ^1.6.0
   gatsby-source-filesystem: ^4.21.1
   gatsby-transformer-sharp: ^4.21.0
+  history: link:@gatsbyjs/reach-router/lib/history
   mitt: ^3.0.0
   prop-types: ^15.8.1
   react: ^18.2.0
@@ -65,6 +66,7 @@ devDependencies:
   gatsby-link: 4.21.0_pncodewfavmcvhkdqteaxcsbcm
   gatsby-react-router-scroll: 5.21.0_pncodewfavmcvhkdqteaxcsbcm
   gatsby-script: 1.6.0_pncodewfavmcvhkdqteaxcsbcm
+  history: link:@gatsbyjs/reach-router/lib/history
   mitt: 3.0.0
   prop-types: 15.8.1
   shallow-compare: 1.2.2

@@ -46,6 +46,7 @@
     "gatsby-link": "^4.21.0",
     "gatsby-react-router-scroll": "^5.21.0",
     "gatsby-script": "^1.6.0",
+    "history": "link:@gatsbyjs/reach-router/lib/history",
     "mitt": "^3.0.0",
     "prop-types": "^15.8.1",
     "shallow-compare": "^1.2.2",
