@@ -29,42 +29,46 @@ defaults:
     shell: bash
 
 jobs:
-  # Build job
   build_environment:
+    name: Build Environment
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2.2.2
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - name: Setup pnpm cache
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v2
+      - name: Cache pnpm modules
         uses: actions/cache@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.1.2
       - name: Install peer dependencies
-        run: pnpm install --dev @babel/core graphql babel-eslint
-      - name: Install dependencies
+        run: pnpm install -D @babel/core graphql babel-eslint
+      - name: Install Dependencies
         run: pnpm install
 
   build:
+    name: Build
     needs: build_environment
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v2
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.1.2
+      - name: Install peer dependencies
+        run: pnpm install -D @babel/core graphql babel-eslint
+      - name: Install Dependencies
+        run: pnpm install
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v1
@@ -73,15 +77,8 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: gatsby
-      - name: Restore Gatsby cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            public
-            .cache
-          key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
-          restore-keys: |
-            ${{ runner.os }}-gatsby-build-
+      - name: Clean Gatsby cache
+        run: pnpm run clean
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
@@ -93,6 +90,7 @@ jobs:
 
   # Deployment job
   deploy:
+    if: github.repository == 'columbia-data-club/columbia-data-club.github.io'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
