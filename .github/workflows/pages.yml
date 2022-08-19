@@ -57,7 +57,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install peer dependencies
-        run: pnpm install --dev @babel/core graphql babel-eslint
+        run: pnpm install -D @babel/core graphql babel-eslint
       - name: Install dependencies
         run: pnpm install
 
