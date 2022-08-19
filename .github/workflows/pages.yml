@@ -94,7 +94,7 @@ jobs:
 
   # Deployment job
   deploy:
-    if: github.repository == "columbia-data-club/columbia-data-club.github.io"
+    if: github.repository == 'columbia-data-club/columbia-data-club.github.io'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
