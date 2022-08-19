@@ -56,6 +56,8 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+      - name: Install peer dependencies
+        run: pnpm install --dev @babel/core graphql babel-eslint
       - name: Install dependencies
         run: pnpm install
 
