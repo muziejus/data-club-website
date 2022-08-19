@@ -65,6 +65,8 @@ jobs:
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.1.2
+      - name: Install gatsby-cli
+        run: pnpm install --global gatsby-cli@next
       - name: Install peer dependencies
         run: pnpm install -D @babel/core graphql babel-eslint
       - name: Install Dependencies
@@ -89,7 +91,7 @@ jobs:
           path: ./public
 
   deploy:
-    name: Deploy to GH Pages
+    name: Deploy to GitHub Pages
     if: github.repository == 'columbia-data-club/columbia-data-club.github.io'
     environment:
       name: github-pages
