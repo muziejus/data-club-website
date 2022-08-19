@@ -39,6 +39,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
+          cacht: "pnpm"
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.2
         id: pnpm-install
@@ -59,7 +60,7 @@ jobs:
       - name: Install peer dependencies
         run: pnpm install -D @babel/core graphql babel-eslint
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
   build:
     needs: build_environment
@@ -93,6 +94,7 @@ jobs:
 
   # Deployment job
   deploy:
+    if: github.repository === "columbia-data-club/columbia-data-club.github.io"
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
