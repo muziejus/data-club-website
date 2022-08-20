@@ -1,65 +1,6 @@
 import * as React from "react"
 import type { HeadFC } from "gatsby"
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const doclistStyles = {
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
 
 const docLinks = [
   {
@@ -73,22 +14,6 @@ const docLinks = [
     color: "#8954A8",
   }
 ]
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
 
 const links = [
   {
@@ -136,23 +61,73 @@ const links = [
   },
 ]
 
+const listClasses = [
+  "mb-6",
+  "pl-0"
+];
+
+const listItemClasses = [
+  "font-weight-300",
+  "text-2xl",
+  "w-max-[560px]",
+  "mb-8"
+]
+
+const linkClasses = [
+  "text-[#8954A8]",
+  "font-bold",
+  "text-lg"
+]
+
+const docLinkClasses = [
+  ...linkClasses,
+  "list-none",
+  "inline-block",
+  "mb-6",
+  "mr-4"
+]
+
+const descriptionClasses = [
+  "text-[#232129]",
+  "text-lg",
+  "mt-2",
+  "mb-0",
+]
+
+const badgeClasses =
+  [
+    "text-white",
+    "bg-[#088413]",
+    "border",
+    "border-[#088413]",
+    "text-sm",
+    "font-bold",
+    "rounded",
+    "py-2",
+    "px-3",
+    "inline-block",
+    "relative",
+    "-top-2",
+    "ml-4",
+  ]
+
 const IndexPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
+    <main className="p-24">
+      <h1 className="mt-0 mb-10 w-max-96">
         Congratulations
         <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
+        <span className="text-[#663399]">— you just made a Gatsby site! 🎉🎉🎉</span>
       </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
+      <p className="mb-10">
+        Edit <code className="text-[#8a6534] p-2 bg-[#FFF4DB] text-2xl rounded">src/pages/index.tsx</code> to see this page
         update in real-time. 😎
       </p>
-      <ul style={doclistStyles}>
+      <ul className="pl-0">
         {docLinks.map(doc => (
-          <li key={doc.url} style={docLinkStyle}>
+          <li key={doc.url} className={docLinkClasses.join(" ")}>
             <a
-              style={linkStyle}
+              className={linkClasses.join(" ")}
               href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
             >
               {doc.text}
@@ -160,22 +135,22 @@ const IndexPage = () => {
           </li>
         ))}
       </ul>
-      <ul style={listStyles}>
+      <ul className={listClasses.join(" ")}>
         {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
+          <li key={link.url} className={[...listItemClasses, `text-[${link.color}]`].join(" ")}>
             <span>
               <a
-                style={linkStyle}
+                className={linkClasses.join(" ")}
                 href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
               >
                 {link.text}
               </a>
               {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
+                <span className={badgeClasses.join(" ")} aria-label="New Badge">
                   NEW!
                 </span>
               )}
-              <p style={descriptionStyle}>{link.description}</p>
+              <p className={descriptionClasses.join(" ")}>{link.description}</p>
             </span>
           </li>
         ))}

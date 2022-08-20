@@ -1,39 +1,41 @@
 import * as React from "react"
 import { Link, HeadFC } from "gatsby"
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const pageClasses = [
+  "text-[#232129]",
+  "p-10",
+]
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+const headingClasses = [
+  "mt-0",
+  "mb-10",
+  "text-3xl",
+  "max-w-96",
+
+
+]
+const paragraphClasses =
+  ["mb-8"]
+
+const codeClasses = [
+  "text-[#8A6534]",
+  "p-2",
+  "bg-[#FFF4DB]",
+  "text-lg",
+  "rounded"
+]
 
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
+    <main className={pageClasses.join(" ")}>
+      <h1 className={headingClasses.join(" ")}>Page not found</h1>
+      <p className={paragraphClasses.join(" ")}>
         Sorry 😔, we couldn’t find what you were looking for.
         <br />
         {process.env.NODE_ENV === "development" ? (
           <>
             <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
+            Try creating a page in <code className={codeClasses.join(" ")}>src/pages/</code>.
             <br />
           </>
         ) : null}
