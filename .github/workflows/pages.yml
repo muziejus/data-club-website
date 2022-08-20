@@ -54,6 +54,10 @@ jobs:
             echo "Unable to determine packager manager"
             exit 1
           fi
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
