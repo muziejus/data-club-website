@@ -4,10 +4,10 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `Columbia Data Club`,
     siteUrl: `https://columbia-data-club.github.io/`,
-        menuLinks: [
+    menuLinks: [
       {
         name: 'home',
-        link:'/'
+        link: '/'
       },
       {
         name: `Page 1`,
@@ -37,14 +37,5 @@ const config: GatsbyConfig = {
       __key: "pages"
     }]
 };
-
-
-
-//module.exports = {
-//  graphqlTypegen: true,
-//}
-//
-
-
 
 export default config;
