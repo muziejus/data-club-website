@@ -29,7 +29,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MenuLinks {
       name: String!
       link: String!
-      subMenu: [SubMenu] @defaultArray
+      subMenu? [SubMenu] @defaultArray
     }
     type SubMenu {
       name: String
