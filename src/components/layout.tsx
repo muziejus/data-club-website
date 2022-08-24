@@ -6,12 +6,18 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
+import PropTypes, { InferProps } from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 
-const Layout = ({ children }) => (
+const LayoutPropTypes = {
+  children: PropTypes.node.isRequired,
+}
+
+type LayoutProps = InferProps<typeof LayoutPropTypes>;
+
+const Layout = ({ children }: LayoutProps) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -52,8 +58,6 @@ const Layout = ({ children }) => (
   />
 )
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+Layout.propTypes = LayoutPropTypes;
 
 export default Layout
