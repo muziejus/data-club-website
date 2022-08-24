@@ -3,7 +3,17 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Columbia Data Club`,
-    siteUrl: `https://columbia-data-club.github.io/`
+    siteUrl: `https://columbia-data-club.github.io/`,
+        menuLinks: [
+      {
+        name: 'home',
+        link:'/'
+      },
+      {
+        name: `Page 1`,
+        link: `/page-1`,
+      },
+    ]
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -27,5 +37,14 @@ const config: GatsbyConfig = {
       __key: "pages"
     }]
 };
+
+
+
+//module.exports = {
+//  graphqlTypegen: true,
+//}
+//
+
+
 
 export default config;
