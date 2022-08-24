@@ -3,9 +3,6 @@ import PropTypes from "prop-types"
 import React from "react"
 
 const Header = ({ siteTitle, menuLinks }) => {
-  console.log(siteTitle);
-  console.log(menuLinks);
-  
   
   return (
   <header
@@ -43,6 +40,7 @@ const Header = ({ siteTitle, menuLinks }) => {
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  menuLinks: PropTypes.array,
 }
 
 Header.defaultProps = {
