@@ -22,35 +22,17 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className="text-white p-10"
-      style={{
-        background: `green`,
-        marginBottom: `1.45rem`,
-      }}
+      className="text-white bg-primary p-5"
     >
       <div>
-        <h1 className="text-4xl">
+        <h1 className="text-4xl font-title font-bold">
           <Link
             to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
           >
             {title}
           </Link>
         </h1>
       </div>
-      <nav>
-        <ul>
-          {menuLinks.map(({ name, link }) => (
-            <li>
-              <Link to={link}>{name}</Link>
-            </li>
-          )
-          )}
-        </ul>
-      </nav>
     </header>
   )
 }
