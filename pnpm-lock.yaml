@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fontsource/ubuntu': ^4.5.11
+  '@fontsource/ubuntu-mono': ^4.5.11
   '@mdx-js/react': ^2.1.3
   '@types/node': ^17.0.45
   '@types/prop-types': ^15.7.5
@@ -8,6 +10,7 @@ specifiers:
   '@types/react-dom': ^18.0.6
   autoprefixer: ^10.4.8
   gatsby: ^4.21.1
+  gatsby-omni-font-loader: ^2.0.2
   gatsby-plugin-image: ^2.21.0
   gatsby-plugin-mdx: ^4.0.0
   gatsby-plugin-pnpm: ^1.2.10
@@ -25,8 +28,11 @@ specifiers:
   typescript: ^4.7.4
 
 dependencies:
+  '@fontsource/ubuntu': 4.5.11
+  '@fontsource/ubuntu-mono': 4.5.11
   '@mdx-js/react': 2.1.3_react@18.2.0
   gatsby: 4.21.1_5pseeqoa3w4jcl6fccmssxxawy
+  gatsby-omni-font-loader: 2.0.2_5xse5ignlkghq32fbxfefygaaq
   gatsby-plugin-image: 2.21.0_pb752lajgrnyjmwyqnem6epu7e
   gatsby-plugin-mdx: 4.0.0_hijfqeve3et5ytqhh5mg4zvida
   gatsby-plugin-pnpm: 1.2.10_gatsby@4.21.1
@@ -1323,6 +1329,14 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+
+  /@fontsource/ubuntu-mono/4.5.11:
+    resolution: {integrity: sha512-IqqJKgp9Xc8tFeCIHPQuFbiKZC8tBU2hdIllwX2pryYfkl8/w4DuScFq9fPMfy1Mp4raFVcJALvOMOfRXkLp/w==}
+    dev: false
+
+  /@fontsource/ubuntu/4.5.11:
+    resolution: {integrity: sha512-c+B8A8r31hJLk8Ek7Svoz4GwjtInhc60LFM6XTr5TKtZbcct8TPNxJuKX4+hnqoWgcvy8s0Gj4mde4TcK/SgDQ==}
+    dev: false
 
   /@gatsbyjs/parcel-namer-relative-to-cwd/1.6.0_@parcel+core@2.6.2:
     resolution: {integrity: sha512-Z5RuA+CuhVTb/xyZePxzFG5KhzDkRzs3e6sBz+WOZnTKGEleN8yxGpATjINL9V7suO9by7bKY3RdRv77qMP+rA==}
@@ -5602,6 +5616,16 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
 
+  /gatsby-omni-font-loader/2.0.2_5xse5ignlkghq32fbxfefygaaq:
+    resolution: {integrity: sha512-Bp6truuUwbDRHWtL+u/lUvMsAT5ipO45LNJgqNdOzTUGw3GB7dw8k4RHDtpxwFTgacdk25kH8aOYfh460jJYCQ==}
+    peerDependencies:
+      gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+      react-helmet: '>=6.0.0'
+    dependencies:
+      gatsby: 4.21.1_5pseeqoa3w4jcl6fccmssxxawy
+      react-helmet: 6.1.0_react@18.2.0
+    dev: false
+
   /gatsby-page-utils/2.21.0:
     resolution: {integrity: sha512-Oxw2Kq0xkjKLeBVPav5Vw+XHEorn/0koy3TSyCOxH3XedrV7Y6Xk1K8IbHqDbguNiK+wxRaKnMl0eyVwxUVC7Q==}
     engines: {node: '>=14.15.0'}
@@ -9165,6 +9189,22 @@ packages:
   /react-error-overlay/6.0.9:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
 
+  /react-fast-compare/3.2.0:
+    resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
+    dev: false
+
+  /react-helmet/6.1.0_react@18.2.0:
+    resolution: {integrity: sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==}
+    peerDependencies:
+      react: '>=16.3.0'
+    dependencies:
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-fast-compare: 3.2.0
+      react-side-effect: 2.1.2_react@18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -9174,6 +9214,14 @@ packages:
   /react-refresh/0.9.0:
     resolution: {integrity: sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==}
     engines: {node: '>=0.10.0'}
+
+  /react-side-effect/2.1.2_react@18.2.0:
+    resolution: {integrity: sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
