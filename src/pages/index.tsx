@@ -6,55 +6,60 @@ import Layout from "../components/layout"
 
 const IndexPage = () => (
   <Layout>
-    <h1 className="text-3xl font-bold">Hi TTTT people</h1>
-    <p>Welcome to our nascent website with minimal functionality .</p>
+    <h1 className="font-title">Hi, Data Friends,</h1>
 
-    <p>Thursdays, 4:30–6pm
-Lehman Library 215
+    <p>
+      Data Club, provided by <a href="https://library.columbia.edu/services/research-data-services/">Research Data Services</a>,
+      offers a series of strategic lessons and a supportive meeting space for members of the
+      Columbia community of all levels to learn, share, and implement the
+      philosophies, tools, and methodologies for a data-driven project of their
+      choosing.
+      In bi-monthly meetings, the Data Club provides a short
+      instructive session, free-work time, and a collaborative and exploratory
+      environment for researchers to pursue a personal project with the
+      assistance of Columbia University librarians and their data-minded peers.
+    </p>
 
-<ul>
-<li>1. Sep 15, Introduction to Xarray: Using labeled, multi-di- mensional arrays in Python.
-Topics covered: Using Python and Google Colab; basic data structures; labeling
-arrays to interface with data, ease computation, and avoid errors.
-</li>
-<li>2. Sep 29, Introduction to HoloViz, Part 1: Make easier,
-more powerful, and more accurate visualizations.
-Topics covered: Data visualization in the SciPy ecosystem.
-</li>
-<li>
-  3. Oct 13, Introduction to HoloViz, Part 2: Continue mak- ing easier, more powerful, and more accurate visualiza- tions.
-  Topics covered: More data visualization in the SciPy ecosystem.
-</li>
-<li>
-  4. Oct 27, Introduction to Relational Databases: Connect
-  to SQL servers to query and update databases.
-  Topics covered: SQLite, MySQL, Pandas.
+    <h2 className="font-title">Fall 2022 Calendar:</h2>
 
-</li>
-<li>
-  5. Nov 10, Exploratory Data Analysis with JavaScript in
-  Observable: See your Data.
-  Topics covered: Observable Plot, d3.
-</li>
-<li>
-  6. Dec 8, Introduction to PyMC: Build Bayesian models and
-  do probabilistic programming in Python.
-  Topics covered: Markov chain Monte Carlo methods
-</li>
-</ul>
+    <ul>
+      <li>Sep 15, <Link to="meetings/2022/september-15-xarray">Introduction to Xarray</Link></li>
+      <li>
+        Sep 29, <Link to="meetings/2022/september-29-holoviz-1">
+          Introduction to HoloViz, Part 1
+        </Link>
+      </li>
+      <li>
+        Oct 13, <Link to="meetings/2022/october-13-holoviz-2">Introduction to HoloViz, Part 2</Link>
+      </li>
+      <li>Oct 27, <Link to="meetings/2022/october-27-databases">Introduction to Relational Databases</Link>
+      </li>
+      <li>
+        Nov 10, <Link to="meetings/2022/november-10-eda-in-observable">Exploratory Data Analysis with JavaScript in Observable</Link>
+      </li>
+      <li>
+        Dec 8, <Link to="meetings/2022/december-08-pymc">Introduction to PyMC</Link>
+      </li>
+    </ul>
 
-Join the Data Club Mailing List:
-https://tinyurl.com/cul-data-club-mailing-list
+    <p>
+      Join the Data Club Mailing List:
+      https://tinyurl.com/cul-data-club-mailing-list
+    </p>
 
-Follow the Club’s Progress on GitHub:
-https://github.com/columbia-data-club
+    <p>
+      Follow the Club’s Progress on GitHub:
+      https://github.com/columbia-data-club
+    </p>
 
-Join the Studio Mailing List to hack at emerging
-practices in pedagogy and digital scholarship:
-https://tinyurl.com/cul-studio-mailing-list</p>
+    <p>
+      Join the Studio Mailing List to hack at emerging
+      practices in pedagogy and digital scholarship:
+      https://tinyurl.com/cul-studio-mailing-list
+    </p>
 
 
-  </Layout>
+  </Layout >
 )
 
 export default IndexPage

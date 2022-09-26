@@ -6,12 +6,21 @@ import Layout from "../components/layout";
 import Video from "../components/video";
 
 const Meeting: React.FC = ({ data, children }) => {
+  const date = new Date(data.mdx.frontmatter.date)
+  const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    weekday: "long",
+    day: "numeric"
+  });
+
   return (
     <Layout>
       <article>
         <header className="block w-full py-5">
           <h1 className="font-title text-3xl font-bold">{data.mdx.frontmatter.title}</h1>
-          <p>{data.mdx.frontmatter.author} {data.mdx.frontmatter.date}</p>
+          <p>{data.mdx.frontmatter.author}<br />
+            {dateFormatter.format(date)}</p>
         </header>
 
         {data.mdx.frontmatter.notebook &&

@@ -20,9 +20,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) =>
 (
   <>
     <Header />
-    <main className="py-5 px-10">{children}</main>
+    <main className="py-5 px-10 prose">{children}</main>
     <footer className="bg-gray text-white p-5">
-      © {new Date().getFullYear()}, Built with 
+      © {new Date().getFullYear()}, Built with
       {` `}
       <a href="https://www.gatsbyjs.com">Gatsby</a>
     </footer>
