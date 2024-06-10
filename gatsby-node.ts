@@ -7,7 +7,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
-    query {
+    {
       allMdx {
         nodes {
           id
@@ -17,40 +17,37 @@ export const createPages = async ({ graphql, actions, reporter }) => {
           internal {
             contentFilePath
           }
-        } 
+        }
       }
     }
-`)
+  `);
 
   if (result.errors) {
-    reporter.panicOnBuild('Error loading MDX result', result.errors)
+    reporter.panicOnBuild("Error loading MDX result", result.errors);
   }
 
   const posts = result.data.allMdx.nodes;
 
-  posts.forEach(node => {
+  posts.forEach((node) => {
     const path = `meetings/${node.frontmatter.slug.replace(/^\//, "")}`;
 
     createPage({
       path,
       component: `${meetingTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-      context: { id: node.id }
-    })
-  })
-}
+      context: { id: node.id },
+    });
+  });
+};
 
-export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({ actions }) => {
-  actions.createTypes(`
-    type Site implements Node {
-      siteMetadata: SiteMetadata!
-    }
-    type SiteMetadata {
-      title: String!
-      menuLinks: [MenuLinks!]!
-    }
-    type MenuLinks {
-      name: String!
-      link: String!
-    }
-  `)
-}
+// export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
+//   ({ actions }) => {
+//     actions.createTypes(`
+//     type Site {
+//       siteMetadata: SiteMetadata!
+//     }
+//
+//     type SiteMetadata {
+//       title: String!
+//     }
+//   `);
+//   };

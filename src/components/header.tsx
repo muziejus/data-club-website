@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     }
   `)
 
-  const { title, menuLinks } = data.site.siteMetadata;
+  const { title } = data.site?.siteMetadata ?? { title: "Data Club Static Title"};
 
   return (
     <header
