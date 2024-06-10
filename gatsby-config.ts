@@ -3,6 +3,8 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Columbia Data Club`,
+    description: `Data Club, provided by Research Data Services, offers a series of strategic lessons and a supportive meeting space for members of the Columbia community of all levels to learn, share, and implement the philosophies, tools, and methodologies for a data-driven project of their choosing.`,
+    author: `Moacir P. de Sá Pereira`,
     siteUrl: `https://columbia-data-club.github.io/`,
     menuLinks: [
       {
@@ -21,7 +23,12 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: ["gatsby-plugin-pnpm",
     "gatsby-plugin-postcss",
-    "gatsby-plugin-image", "gatsby-plugin-sitemap", "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+    "gatsby-plugin-image", 
+    "gatsby-plugin-sitemap", 
+    "gatsby-plugin-mdx", 
+    "gatsby-plugin-sharp", 
+    "gatsby-transformer-sharp", 
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "images",
