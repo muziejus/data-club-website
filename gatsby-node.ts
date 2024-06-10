@@ -1,13 +1,31 @@
-import { GatsbyNode } from "gatsby";
 import path from "path";
+import { GatsbyNode } from "gatsby";
 
-const meetingTemplate = path.resolve(`./src/templates/meeting.tsx`);
+interface MdxNode {
+  id: string;
+  frontmatter: {
+    slug: string;
+  };
+  internal: {
+    contentFilePath: string;
+  };
+}
 
-export const createPages = async ({ graphql, actions, reporter }) => {
+interface CreatePagesResult {
+  allMdx: {
+    nodes: MdxNode[];
+  };
+}
+
+export const createPages: GatsbyNode["createPages"] = async ({
+  graphql,
+  actions,
+  reporter,
+}) => {
   const { createPage } = actions;
 
-  const result = await graphql(`
-    {
+  const result = await graphql<CreatePagesResult>(`
+    query GetMdxPages {
       allMdx {
         nodes {
           id
@@ -26,28 +44,31 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild("Error loading MDX result", result.errors);
   }
 
-  const posts = result.data.allMdx.nodes;
-
-  posts.forEach((node) => {
-    const path = `meetings/${node.frontmatter.slug.replace(/^\//, "")}`;
-
-    createPage({
-      path,
-      component: `${meetingTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-      context: { id: node.id },
+  // Create blog post pages.
+  const meetingTemplate = path.resolve(`./src/templates/meeting.tsx`);
+  if (result.data) {
+    const posts = result.data.allMdx.nodes;
+    posts.forEach((node) => {
+      createPage({
+        path: node.frontmatter.slug,
+        // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
+        component: `${meetingTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+        // component: node.internal.contentFilePath,
+        context: { id: node.id },
+      });
     });
-  });
+  }
 };
 
-// export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
-//   ({ actions }) => {
-//     actions.createTypes(`
-//     type Site {
-//       siteMetadata: SiteMetadata!
-//     }
-//
-//     type SiteMetadata {
-//       title: String!
-//     }
-//   `);
-//   };
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
+  ({ actions }) => {
+    actions.createTypes(`
+    type Site {
+      siteMetadata: SiteMetadata!
+    }
+
+    type SiteMetadata {
+      title: String!
+    }
+  `);
+  };
