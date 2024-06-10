@@ -50,7 +50,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     const posts = result.data.allMdx.nodes;
     posts.forEach((node) => {
       createPage({
-        path: node.frontmatter.slug,
+        path: `meetings/${node.frontmatter.slug.replace(/^\//, "")}`,
         // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
         component: `${meetingTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
         // component: node.internal.contentFilePath,
