@@ -32,8 +32,6 @@ const IndexPage = () => (
       <li>
         Oct 13, <Link to="meetings/2022/october-13-holoviz-2">Introduction to HoloViz, Part 2</Link>
       </li>
-      <li>Oct 27, <Link to="meetings/2022/october-27-databases">Introduction to Relational Databases</Link>
-      </li>
       <li>
         Nov 10, <Link to="meetings/2022/november-10-eda-in-observable">Exploratory Data Analysis with JavaScript in Observable</Link>
       </li>
