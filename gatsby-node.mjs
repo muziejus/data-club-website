@@ -1,30 +1,31 @@
+// @ts-check
+
+/**
+ * @type {import('gatsby').GatsbyNode['createPages']}
+ */
+
 import path from "path";
-import { GatsbyNode } from "gatsby";
 
-interface MdxNode {
-  id: string;
-  frontmatter: {
-    slug: string;
-  };
-  internal: {
-    contentFilePath: string;
-  };
-}
+// interface MdxNode {
+//   id: string;
+//   frontmatter: {
+//     slug: string;
+//   };
+//   internal: {
+//     contentFilePath: string;
+//   };
+// }
+//
+// interface CreatePagesResult {
+//   allMdx: {
+//     nodes: MdxNode[];
+//   };
+// }
 
-interface CreatePagesResult {
-  allMdx: {
-    nodes: MdxNode[];
-  };
-}
-
-export const createPages: GatsbyNode["createPages"] = async ({
-  graphql,
-  actions,
-  reporter,
-}) => {
+export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const result = await graphql<CreatePagesResult>(`
+  const result = await graphql(`
     query GetMdxPages {
       allMdx {
         nodes {
@@ -60,15 +61,15 @@ export const createPages: GatsbyNode["createPages"] = async ({
   }
 };
 
-export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
-  ({ actions }) => {
-    actions.createTypes(`
-    type Site {
-      siteMetadata: SiteMetadata!
-    }
-
-    type SiteMetadata {
-      title: String!
-    }
-  `);
-  };
+// export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
+//   ({ actions }) => {
+//     actions.createTypes(`
+//     type Site {
+//       siteMetadata: SiteMetadata!
+//     }
+//
+//     type SiteMetadata {
+//       title: String!
+//     }
+//   `);
+//   };
