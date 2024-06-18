@@ -41,18 +41,32 @@ const config = {
         //   remarkPlugins: [remarkGfm]
         // }
         // extensions: [`.mdx`, `.md`],
-        // gatsbyRemarkPlugins: [
-        //   {
-        //     resolve: "gatsby-remark-images",
-        //     options: {
-        //       maxWidth: 1200,
-        //     },
-        //   },
-        // ],
-        // remarkPlugins: [remarkGfm],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
       },
     },
     "gatsby-plugin-sharp",
+    // {
+    //   resolve: "gatsby-transformer-remark",
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: "gatsby-remark-images",
+    //         options: {
+    //           maxWidth: 590,
+    //         },
+    //       },
+    //       // "gatsby-remark-copy-linked-files",
+    //       // "gatsby-remark-smartypants",
+    //     ],
+    //   },
+    // },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
@@ -62,6 +76,13 @@ const config = {
       },
       __key: "images",
     },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "pages",
+    //     path: `${__dirname}/src/pages/`,
+    //   },
+    // },
     {
       resolve: "gatsby-source-filesystem",
       options: {
