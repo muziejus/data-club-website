@@ -62,14 +62,23 @@ export const createPages = async ({ graphql, actions, reporter }) => {
 };
 
 // export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
-//   ({ actions }) => {
-//     actions.createTypes(`
-//     type Site {
-//       siteMetadata: SiteMetadata!
-//     }
-//
-//     type SiteMetadata {
-//       title: String!
-//     }
-//   `);
-//   };
+export const createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type Site {
+      siteMetadata: SiteMetadata!
+    }
+
+    type SiteMetadata {
+      title: String!
+    }
+
+    type Mdx implements Node {
+      frontmatter: Frontmatter!
+    }
+
+    type Frontmatter {
+      title: String!
+      date: Date! @dateformat
+    }
+  `);
+};
