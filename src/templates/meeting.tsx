@@ -18,10 +18,12 @@ const Meeting = ({ data, children }: MeetingProps) => {
       <Layout>
         <article>
           <header className="block w-full py-5">
-            <GatsbyImage
-              image={image as IGatsbyImageData}
-              alt={data.mdx.frontmatter.title as string}
-            />
+            { image && 
+              <GatsbyImage
+                image={image}
+                alt={data.mdx.frontmatter.title as string}
+              />
+            }
             <h1 className="font-title text-3xl font-bold">{data.mdx.frontmatter.title}</h1>
             <p>{data.mdx.frontmatter.author}<br />
               {data.mdx.frontmatter.date}</p>
@@ -29,7 +31,7 @@ const Meeting = ({ data, children }: MeetingProps) => {
 
           {data.mdx.frontmatter.notebook &&
             <p className="text-xl">Meeting notebook: <a href={`https://colab.research.google.com/github/columbia-data-club/meetings/blob/main/${data.mdx.frontmatter.notebook}`}>
-              <StaticImage src="../mages/open-in-colab.svg" alt="Open in Colab" />
+              <StaticImage src="../images/open-in-colab.svg" alt="Open in Colab" />
             </a></p>
           }
 
