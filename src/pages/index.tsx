@@ -1,10 +1,33 @@
-import * as React from "react"
-
-import { Link } from "gatsby"
+import React from "react"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 
-const IndexPage = () => (
+type UpcomingMeetingProps = {
+  data: Queries.UpcomingMeetingsQuery;
+}
+
+const currentSemester = "Fall 2024";
+
+export const query = graphql`
+  query UpcomingMeetings {
+    allMdx(
+      sort: {frontmatter: {date: ASC}}
+      filter: {frontmatter: {date: {gt: "2024-09-01"}}}
+    ) {
+      nodes {
+        frontmatter {
+          title
+          slug
+          date(formatString: "MMMM D, YYYY")
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }: UpcomingMeetingProps) => 
+(
   <Layout>
     <h1 className="font-title">Hi, Data Friends,</h1>
 
@@ -14,31 +37,30 @@ const IndexPage = () => (
       Columbia community of all levels to learn, share, and implement the
       philosophies, tools, and methodologies for a data-driven project of their
       choosing.
+    </p>
+
+    <p>
       In bi-monthly meetings, the Data Club provides a short
       instructive session, free-work time, and a collaborative and exploratory
       environment for researchers to pursue a personal project with the
       assistance of Columbia University librarians and their data-minded peers.
     </p>
 
-    <h2 className="font-title">Fall 2022 Calendar:</h2>
+    <h2 className="font-title">{currentSemester} Calendar:</h2>
 
     <ul>
-      <li>Sep 15, <Link to="meetings/2022/september-15-xarray">Introduction to Xarray</Link></li>
-      <li>
-        Sep 29, <Link to="meetings/2022/september-29-holoviz-1">
-          Introduction to HoloViz, Part 1
-        </Link>
-      </li>
-      <li>
-        Oct 13, <Link to="meetings/2022/october-13-holoviz-2">Introduction to HoloViz, Part 2</Link>
-      </li>
-      <li>
-        Nov 10, <Link to="meetings/2022/november-10-eda-in-observable">Exploratory Data Analysis with JavaScript in Observable</Link>
-      </li>
-      <li>
-        Dec 8, <Link to="meetings/2022/december-08-pymc">Introduction to PyMC</Link>
-      </li>
+      {data.allMdx.nodes.map(({ frontmatter }) => {
+        const { slug, title, date } = frontmatter
+        const url = `meetings/${slug}`;
+        return (
+          <li key={slug}>
+            <Link to={url}>{title}</Link> ({date})
+          </li>
+        )
+      })}
     </ul>
+
+    <h2 className="font-title">Stay Informed:</h2>
 
     <p>
       Join the Data Club Mailing List:
@@ -55,7 +77,6 @@ const IndexPage = () => (
       practices in pedagogy and digital scholarship:
       https://tinyurl.com/cul-studio-mailing-list
     </p>
-
 
   </Layout >
 )
