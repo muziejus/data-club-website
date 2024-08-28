@@ -25,11 +25,31 @@ const Header: React.FC = () => {
       className="text-white bg-primary p-5"
     >
       <div>
-        <h1 className="text-4xl font-title font-bold">
+        <h1 className="text-4xl font-title bg-columbiaBlue p-3">
           <Link
             to="/"
           >
-            {title}
+            <span className="font-black text-darkBlue">
+              columbia
+            </span>
+            <span className="text-green">
+              (
+            </span>
+            <span className="text-gray italic">
+             &nbsp; data &nbsp;
+            </span>
+            <span className="text-green">
+              )
+            </span>
+            <span className="text-orange">
+              {'{'}
+            </span>
+            <span className="text-darkBlue">
+              &nbsp; club &nbsp;
+            </span>
+            <span className="text-orange">
+              {'}'}
+            </span>
           </Link>
         </h1>
       </div>
