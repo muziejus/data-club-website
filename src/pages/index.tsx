@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import { Instagram, GitHub, Youtube, Mail, Calendar} from "react-feather"
 
 import Layout from "../components/layout"
 
@@ -62,20 +63,18 @@ const IndexPage = ({ data }: UpcomingMeetingProps) =>
 
     <h2 className="font-title">Stay Informed:</h2>
 
-    <p>
-      Join the Data Club Mailing List:
-      https://tinyurl.com/cul-data-club-mailing-list
-    </p>
+        <ul>
+          <li><a href="https://columbia-data.club/2uacor"><Instagram /> on Instagram</a></li>
+          <li><a href="https://columbia-data.club/nshs5f"><Mail /> via e-mail</a></li>
+          <li><a href="https://columbia-data.club/nshs5f"><Calendar /> with our calendar</a></li>
+          <li><a href="https://columbia-data.club/rv3e7q"><GitHub /> on GitHub</a></li>
+          <li><a href="https://columbia-data.club/8m0pqm"><Youtube /> on YouTube</a></li>
+        </ul>
+
 
     <p>
       Follow the Club’s Progress on GitHub:
       https://github.com/columbia-data-club
-    </p>
-
-    <p>
-      Join the Studio Mailing List to hack at emerging
-      practices in pedagogy and digital scholarship:
-      https://tinyurl.com/cul-studio-mailing-list
     </p>
 
   </Layout >
