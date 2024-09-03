@@ -1,7 +1,6 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
-
-
+import ColumbiaDataClubHeader from "./assets/columbia-data-club.inline.svg"
 
 const Header: React.FC = () => {
   const data: Queries.SiteTitleAndMenuLinksQuery = useStaticQuery(graphql`
@@ -22,36 +21,15 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className="text-white bg-primary p-5"
+      className="text-white bg-darkBlue p-5"
     >
-      <div>
-        <h1 className="text-4xl font-title bg-columbiaBlue p-3">
+      <div className="bg-columbiaBlue p-4 pt-5">
           <Link
             to="/"
           >
-            <span className="font-black text-darkBlue">
-              columbia
-            </span>
-            <span className="text-green">
-              (
-            </span>
-            <span className="text-gray italic">
-             &nbsp; data &nbsp;
-            </span>
-            <span className="text-green">
-              )
-            </span>
-            <span className="text-orange">
-              {'{'}
-            </span>
-            <span className="text-darkBlue">
-              &nbsp; club &nbsp;
-            </span>
-            <span className="text-orange">
-              {'}'}
-            </span>
+            <h1 className="sr-only">{ title }</h1>
+            <ColumbiaDataClubHeader />
           </Link>
-        </h1>
       </div>
     </header>
   )

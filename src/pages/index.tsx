@@ -70,13 +70,6 @@ const IndexPage = ({ data }: UpcomingMeetingProps) =>
           <li><a href="https://columbia-data.club/rv3e7q"><GitHub /> on GitHub</a></li>
           <li><a href="https://columbia-data.club/8m0pqm"><Youtube /> on YouTube</a></li>
         </ul>
-
-
-    <p>
-      Follow the Club’s Progress on GitHub:
-      https://github.com/columbia-data-club
-    </p>
-
   </Layout >
 )
 

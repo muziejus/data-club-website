@@ -90,6 +90,14 @@ const config = {
         path: `${__dirname}/src/posts/`,
       },
     },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
+      },
+    },
   ],
   trailingSlash: `always`, // default is always.
 };
